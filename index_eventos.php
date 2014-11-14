@@ -1,16 +1,14 @@
 <?php
 	session_start();
 	include "conectaBanco.php";
-
-	if(!isset($_SESSION['username'])){	
-		header("Location: index.php?cod_error=50&".SID);
-	}
+	if(!isset($_SESSION['username'])){ 	header("Location: index.php?cod_error=50&".SID);	}
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+
 <title>Controle de presença em eventos via web</title>
 
 <?php require ('header.php'); ?>
@@ -31,23 +29,25 @@
 		<?php
 			eventos();
 		?>
+
 	</div>
 
-	  <div  > 
+
+	  <div  >
     	<center>EVENTOS</center>
 		<?php
 		sub_eventos();
 		if(isset($_GET['id_evento']) && isset($_GET['id_sub_evento']) ){
-			vincular_usuario_evento(); 
+			vincular_usuario_evento();
 		}
 		?>
     </div>
 
-     <div > 
+     <div >
     	<center>DETALHES DO EVENTO</center>
 		<?php
 			if(isset($_GET['ver_mais'])){
-				detalhes_eventos(); 
+				detalhes_eventos();
 			}
 		?>
     </div>
